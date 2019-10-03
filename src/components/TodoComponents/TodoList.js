@@ -7,10 +7,6 @@ const TLWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	margin-top: 30px;
-
-	font-size: 2rem;
-
 	li {
 		margin: 10px;
 		font-size: 2rem;
@@ -23,13 +19,9 @@ const TLWrapper = styled.div`
 `;
 
 
-
 const TodoList = (props) =>  {
-
-
 	return (
 		<TLWrapper>
-
 			<ul>
 				{props.todolist.map(todo => {
 					return (
@@ -41,10 +33,8 @@ const TodoList = (props) =>  {
 					);
 				})}
 			</ul>
-			
 		</TLWrapper>
 	);
-
 };
 
 

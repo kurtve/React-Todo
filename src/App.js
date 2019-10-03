@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 
 const AppWrapper = styled.div`
@@ -42,14 +43,10 @@ class App extends Component {
 	}
 
 
-	submitHandler = (e) => {
-		e.preventDefault();
-
-		if (this.state.newtask === '') return;
-
+	addTodo = (newtask) => {
 		const newTodo = {
 			id: Date.now(),
-			task: this.state.newtask,
+			task: newtask,
 			completed: false
 		};
 
@@ -60,8 +57,7 @@ class App extends Component {
 	}
 
 
-	resetForm = (e) => {
-		e.preventDefault();
+	resetForm = () => {
 		const newlist = this.state.todolist.filter(item => !item.completed);
 
 		this.setState({...this.state, todolist: newlist});
@@ -80,12 +76,6 @@ class App extends Component {
 	}
 
 
-	handleChange = (e) => {
-		e.preventDefault();
-		this.setState({...this.state, [e.target.name]: e.target.value })
-	}
-
-
 	render() {
 		return (
 			<AppWrapper>
@@ -94,17 +84,7 @@ class App extends Component {
 
 				<TodoList todolist={this.state.todolist} todoClick={this.toggleDone} />
 				
-			    <form onSubmit={this.submitHandler}>
-				    <input
-				        onChange={this.handleChange}
-				        placeholder="Enter new task"
-				        type="text"
-				        name="newtask"
-				        value={this.state.newtask}
-				    />
-				    <button type="submit">Add Task</button>
-				    <button onClick={this.resetForm}>Clear Completed</button>
-			    </form>
+				<TodoForm addTodo={this.addTodo} resetForm={this.resetForm} />
 			</AppWrapper>
 		);
 	}
