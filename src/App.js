@@ -15,17 +15,13 @@ const AppWrapper = styled.div`
 	font-size: 2rem;
 
 	h1 {
-		margin: 10px;
+		margin: 20px;
 		font-size: 5rem;
 	}
 
 	h3 {
-		margin: 5px;
+		margin-bottom: 20px;
 		font-size: 3rem;
-	}
-
-	.done {
-		text-decoration: line-through;
 	}
 
 `;
@@ -64,9 +60,7 @@ class App extends Component {
 	}
 
 
-	toggleDone = (e, id) => {
-		e.preventDefault();
-
+	toggleDone = (id) => {
 		const newlist = this.state.todolist.map(item => ({
 			...item,
 			completed: item.id === id ? !item.completed : item.completed

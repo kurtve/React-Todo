@@ -9,7 +9,28 @@ const TFWrapper = styled.div`
 
 	margin-top: 30px;
 
-	font-size: 1.8rem;
+	.task-input {
+		width: 350px;
+		height: 30px;
+	}
+
+	.button-bar {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin: 20px 0;
+
+		width: 350px;
+
+		button {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+
+			width: 150px;
+			height: 30px;
+		}
+	}
 
 `;
 
@@ -57,14 +78,17 @@ class TodoForm extends Component {
 			<TFWrapper>			
 			    <form onSubmit={this.submitHandler}>
 				    <input
+				    	className='task-input'
 				        onChange={this.handleChange}
 				        placeholder="Enter new task"
 				        type="text"
 				        name="newtask"
 				        value={this.state.newtask}
 				    />
-				    <button type="submit">Add Task</button>
-				    <button onClick={this.clearCompleted}>Clear Completed</button>
+				    <div className='button-bar'>
+					    <button type="submit">Add Task</button>
+					    <button onClick={this.clearCompleted}>Clear Completed</button>
+					</div>
 			    </form>
 			</TFWrapper>
 		);

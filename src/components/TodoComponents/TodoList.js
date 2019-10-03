@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Todo from './Todo';
+
 
 const TLWrapper = styled.div`
 	display: flex;
@@ -9,11 +11,6 @@ const TLWrapper = styled.div`
 
 	li {
 		margin: 10px;
-		font-size: 2rem;
-	}
-
-	.done {
-		text-decoration: line-through;
 	}
 
 `;
@@ -25,10 +22,8 @@ const TodoList = (props) =>  {
 			<ul>
 				{props.todolist.map(todo => {
 					return (
-						<li key={todo.id}
-							className={todo.completed ? 'done' : ''}
-							onClick={e => props.todoClick(e, todo.id)} >
-							{todo.task}
+						<li key={todo.id}>
+							<Todo todo={todo} todoClick={props.todoClick} />
 						</li>
 					);
 				})}
