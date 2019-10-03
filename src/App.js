@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import TodoList from './components/TodoComponents/TodoList';
+
 
 const AppWrapper = styled.div`
 	display: flex;
@@ -90,17 +92,7 @@ class App extends Component {
 				<h1>To-Do!</h1>
 				<h3>Your Tasks:</h3>
 
-				<ul>
-					{this.state.todolist.map(todo => {
-						return (
-							<li key={todo.id}
-								className={todo.completed ? 'done' : ''}
-								onClick={e => this.toggleDone(e, todo.id)} >
-								{todo.task}
-							</li>
-						);
-					})}
-				</ul>
+				<TodoList todolist={this.state.todolist} todoClick={this.toggleDone} />
 				
 			    <form onSubmit={this.submitHandler}>
 				    <input
